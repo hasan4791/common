@@ -184,7 +184,7 @@ github.com/containers/ocicrypt/keywrap/pkcs7
 github.com/containers/ocicrypt/spec
 github.com/containers/ocicrypt/utils
 github.com/containers/ocicrypt/utils/keyprovider
-# github.com/containers/storage v1.57.3-0.20250310120440-ab85543c3c6a
+# github.com/containers/storage v1.57.3-0.20250310120440-ab85543c3c6a => github.com/hasan4791/storage v1.57.3-0.20250313083103-0a10aab5a277
 ## explicit; go 1.22.0
 github.com/containers/storage
 github.com/containers/storage/drivers
@@ -890,3 +890,4 @@ sigs.k8s.io/yaml/goyaml.v2
 # tags.cncf.io/container-device-interface v0.8.1
 ## explicit; go 1.20
 tags.cncf.io/container-device-interface/pkg/parser
+# github.com/containers/storage => github.com/hasan4791/storage v1.57.3-0.20250313083103-0a10aab5a277

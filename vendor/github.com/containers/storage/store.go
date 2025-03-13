@@ -701,6 +701,9 @@ type ImageOptions struct {
 	// Flags is a set of named flags and their values to store with the image.  Currently these can only
 	// be set when the image record is created, but that could change in the future.
 	Flags map[string]interface{}
+	// PullSource store the source from where the image is being pulled.
+	// This field comes handy when mutiple mirrors are configured for an image.
+	PullSource string
 }
 
 type ImageBigDataOption struct {
@@ -1612,6 +1615,7 @@ func (s *store) CreateImage(id string, names []string, layer, metadata string, i
 						Digest:       i.Digest,
 						Digests:      copySlicePreferringNil(i.Digests),
 						NamesHistory: copySlicePreferringNil(i.NamesHistory),
+						PullSource:   i.PullSource,
 					}
 					for _, key := range i.BigDataNames {
 						data, err := store.BigData(id, key)
@@ -1652,6 +1656,7 @@ func (s *store) CreateImage(id string, names []string, layer, metadata string, i
 				options.Flags = make(map[string]interface{})
 			}
 			maps.Copy(options.Flags, iOptions.Flags)
+			options.PullSource = iOptions.PullSource
 		}
 
 		if options.CreationDate.IsZero() {
@@ -2454,6 +2459,7 @@ func (s *store) updateNames(id string, names []string, op updateNameOperation) e
 				Metadata:     i.Metadata,
 				NamesHistory: copySlicePreferringNil(i.NamesHistory),
 				Flags:        copyMapPreferringNil(i.Flags),
+				PullSource:   i.PullSource,
 			}
 			for _, key := range i.BigDataNames {
 				data, err := store.BigData(id, key)

@@ -157,3 +157,5 @@ retract (
 	v1.0.1 // This version is used only to publish retraction of v1.0.1.
 	v1.0.0 // We reverted to v0.… version numbers; the v1.0.0 tag was actually deleted.
 )
+
+replace github.com/containers/storage => github.com/hasan4791/storage v1.57.3-0.20250313083103-0a10aab5a277
