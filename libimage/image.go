@@ -163,6 +163,12 @@ func (i *Image) Digests() []digest.Digest {
 	return i.storageImage.Digests
 }
 
+// PullSource is the source from where the image is being pulled.
+// This field comes handy when multiple mirrors are configured for an image.
+func (i *Image) PullSource() string {
+	return i.storageImage.PullSource
+}
+
 // hasDigest returns whether the specified value matches any digest of the
 // image.
 func (i *Image) hasDigest(wantedDigest digest.Digest) bool {

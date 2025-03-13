@@ -20,6 +20,7 @@ type ImageData struct {
 	Digest       digest.Digest                 `json:"Digest"`
 	RepoTags     []string                      `json:"RepoTags"`
 	RepoDigests  []string                      `json:"RepoDigests"`
+	PullSource   string                        `json:"PullSource"`
 	Parent       string                        `json:"Parent"`
 	Comment      string                        `json:"Comment"`
 	Created      *time.Time                    `json:"Created"`
@@ -124,6 +125,7 @@ func (i *Image) Inspect(ctx context.Context, options *InspectOptions) (*ImageDat
 		ID:           i.ID(),
 		RepoTags:     repoTags,
 		RepoDigests:  repoDigests,
+		PullSource:   i.PullSource(),
 		Created:      ociImage.Created,
 		Author:       ociImage.Author,
 		Architecture: ociImage.Architecture,
